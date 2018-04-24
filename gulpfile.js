@@ -24,9 +24,8 @@
  * Setup the variables that we will use in the tasks
  *
  */
-var plugins = [];
 
-plugins.push({
+var plugins = [{
         name: "Team Showcase",
         folder: "team-showcase",
         shortname: "tshowcase",
@@ -73,9 +72,7 @@ plugins.push({
         jsfolder: ["/assets/js/", "/admin/js/"],
         langfolder: "/lang/",
         domain: "advq",
-    }
-
-);
+    }];
 
 
 var devURL = 'http://localhost/abril/';
@@ -135,7 +132,7 @@ gulp.task('browser-sync', function() {
 
 
 
-//arrays to store all tasks & dependencies
+//arrays to store all tasks
 var ziptasks = [],
     translatetasks = [],
     minjstasks = [],
