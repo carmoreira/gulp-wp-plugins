@@ -15,7 +15,7 @@
  *      -> gulp mincss-plugin-name / gulp mincss-all
  *
  * @author Carlos Moreira (@carmoreira)
- * @version 1.0
+ * @version 1.1
  */
 /**
  *
