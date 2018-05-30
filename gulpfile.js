@@ -95,7 +95,11 @@ var minifycss = require('gulp-uglifycss'); // Minifies CSS files.
 
 
 //Minify JS
-var uglify = require('gulp-uglify');
+//var uglifyes = require('uglify-es');
+//var composer = require('gulp-uglify/composer');
+//var uglify = composer(uglifyes, console);
+//var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify-es').default;
 var pump = require('pump');
 
 //Translation 
