@@ -72,11 +72,28 @@ var plugins = [{
         jsfolder: ["/assets/js/", "/admin/js/"],
         langfolder: "/lang/",
         domain: "advq",
-    }];
+    },
+    {
+        name: "Date Time Picker Field",
+        folder: "date-time-picker-field",
+        shortname: "dtp",
+        jsfolder: ["/assets/js/"],
+        langfolder: "/lang/",
+        domain: "dtpicker",
+	},
+	{
+        name: "Team Showcase Users Bridge",
+        folder: "team-showcase-users-bridge",
+        shortname: "tsu",
+        //jsfolder: ["/assets/js/"],
+        langfolder: "/lang/",
+        domain: "tsu",
+    }
+];
 
 
-var devURL = 'http://localhost/abril/';
-var host = 'localhost/abril/'
+var devURL = 'https://dev.local/';
+var host = 'dev.local/'
 var zipfolder = './../dist'; //we create the zip folder one directory above this, which should be the plugins folder
 var ziparchive = './../archive'; //we create an extra zip with data sufix to archive
 
