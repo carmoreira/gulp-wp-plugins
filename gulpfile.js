@@ -92,9 +92,9 @@ var plugins = [{
 ];
 
 
-var devURL = 'https://dev.local/';
-var host = 'dev.local/'
-var zipfolder = './../dist'; //we create the zip folder one directory above this, which should be the plugins folder
+var devURL     = 'https://dev.local/';
+var host       = 'dev.local/'
+var zipfolder  = './../dist'; //we create the zip folder one directory above this, which should be the plugins folder
 var ziparchive = './../archive'; //we create an extra zip with data sufix to archive
 
 /**
@@ -117,19 +117,19 @@ var minifycss = require('gulp-uglifycss'); // Minifies CSS files.
 //var uglify = composer(uglifyes, console);
 //var uglify = require('gulp-uglify');
 var uglify = require('gulp-uglify-es').default;
-var pump = require('pump');
+var pump   = require('pump');
 
 //Translation 
 var wpPot = require('gulp-wp-pot'); // For generating the .pot file.
-var sort = require('gulp-sort'); // Recommended to prevent unnecessary changes in pot-file.
+var sort  = require('gulp-sort'); // Recommended to prevent unnecessary changes in pot-file.
 
 
 //Utility plugins
-var rename = require('gulp-rename'); // Helps with renaming
-var notify = require('gulp-notify'); // Sends message notifications
+var rename      = require('gulp-rename'); // Helps with renaming
+var notify      = require('gulp-notify'); // Sends message notifications
 var browserSync = require('browser-sync').create(); // Reloads browser and injects CSS. Time-saving synchronised browser testing.
-var reload = browserSync.reload; // For manual browser reload.
-var sourcemaps = require('gulp-sourcemaps'); // Map minified files to original files
+var reload      = browserSync.reload; // For manual browser reload.
+var sourcemaps  = require('gulp-sourcemaps'); // Map minified files to original files
 
 
 /**
@@ -154,11 +154,11 @@ gulp.task('browser-sync', function() {
 
 
 //arrays to store all tasks
-var ziptasks = [],
+var ziptasks       = [],
     translatetasks = [],
-    minjstasks = [],
-    mincsstasks = [],
-    watchtasks = [];
+    minjstasks     = [],
+    mincsstasks    = [],
+    watchtasks     = [];
 
 //loop through the plugins array to build the tasks
 for (var i = plugins.length - 1; i >= 0; i--) {
@@ -167,9 +167,9 @@ for (var i = plugins.length - 1; i >= 0; i--) {
 
 function create_tasks(e) {
 
-    var plugin = plugins[e];
-    var slug = plugin.folder;
-    var dir = './../' + slug;
+    var plugin       = plugins[e];
+    var slug         = plugin.folder;
+    var dir          = './../' + slug;
     var zipdepencies = [];
 
     /*
@@ -178,8 +178,8 @@ function create_tasks(e) {
      */
 
     var translateTaskName = 'translate-' + plugin.shortname;
-    var translationFile = plugin.domain + '.pot';
-    var phpfiles = dir + '/**/*.php';
+    var translationFile   = plugin.domain + '.pot';
+    var phpfiles          = dir + '/**/*.php';
 
     translatetasks.push(translateTaskName);
     zipdepencies.push(translateTaskName);
