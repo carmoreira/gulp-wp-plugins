@@ -3,14 +3,14 @@
  *
  * Perform actions such as:
  *
- *   
+ *
  *   - Enable browserSync
  *   - Watch for Changes (to trigger browser reload and minify)
- *   - Create .pot translation files 
+ *   - Create .pot translation files
  *      -> gulp translate-plugin-name / gulp translate-all
- *   - Create plugins zip file 
+ *   - Create plugins zip file
  *      -> gulp zip-plugin-name / gulp zip-all
- *   - Minify CSS e JS 
+ *   - Minify CSS e JS
  *      -> gulp minjs-plugin-name / gulp minjs-all
  *      -> gulp mincss-plugin-name / gulp mincss-all
  *
@@ -77,7 +77,7 @@ var plugins = [{
         name: "Date Time Picker Field",
         folder: "date-time-picker-field",
         shortname: "dtp",
-        jsfolder: ["/assets/js/"],
+        jsfolder: ["/assets/js/", "/assets/js/vendor/datetimepicker/"],
         langfolder: "/lang/",
         domain: "dtpicker",
 	},
@@ -93,7 +93,7 @@ var plugins = [{
 
 
 var devURL     = 'https://dev.local/';
-var host       = 'dev.local/'
+var host       = 'dev.local/';
 var zipfolder  = './../dist'; //we create the zip folder one directory above this, which should be the plugins folder
 var ziparchive = './../archive'; //we create an extra zip with data sufix to archive
 
@@ -119,7 +119,7 @@ var minifycss = require('gulp-uglifycss'); // Minifies CSS files.
 var uglify = require('gulp-uglify-es').default;
 var pump   = require('pump');
 
-//Translation 
+//Translation
 var wpPot = require('gulp-wp-pot'); // For generating the .pot file.
 var sort  = require('gulp-sort'); // Recommended to prevent unnecessary changes in pot-file.
 
@@ -161,8 +161,8 @@ var ziptasks       = [],
     watchtasks     = [];
 
 //loop through the plugins array to build the tasks
-for (var i = plugins.length - 1; i >= 0; i--) {
-    create_tasks(i);
+for (var ix = plugins.length - 1; ix >= 0; ix--) {
+    create_tasks(ix);
 }
 
 function create_tasks(e) {
@@ -191,12 +191,12 @@ function create_tasks(e) {
                 domain: plugin.domain,
                 package: plugin.slug,
             }))
-            .pipe(gulp.dest(dir + plugin.langfolder + translationFile))
+            .pipe(gulp.dest(dir + plugin.langfolder + translationFile));
         //.pipe( notify( { message: 'TASK: "translate" for '+plugin.name+' Completed! 💯', onLast: true } ) );
 
     });
 
-    
+
 
     /*
      * Minify JS Tasks
@@ -216,7 +216,7 @@ function create_tasks(e) {
                 jsdestination = dir + plugin.jsfolder[i];
                 jsfiles.push(jsdestination + '*.js',
                     '!' + jsdestination + '/*.min.js');
-            };
+            }
         } else {
             jsdestination = dir + plugin.jsfolder;
             jsfiles = [jsdestination + '*.js',
@@ -265,7 +265,7 @@ function create_tasks(e) {
                 cssdestination = dir + plugin.cssfolder[i];
                 cssfiles.push(cssdestination + '*.css',
                     '!' + cssdestination + '/*.min.css');
-            };
+            }
         } else {
             cssdestination = dir + plugin.cssfolder;
             cssfiles = [cssdestination + '*.css',
@@ -295,16 +295,16 @@ function create_tasks(e) {
                 }))
                 .pipe(gulp.dest(function(file) {
                     return file.base;
-                }))
+                }));
         });
 
     }
 
     /*
      * Zip Tasks
-     * Let's create the zip tasks for each plugin 
+     * Let's create the zip tasks for each plugin
      */
-     
+
     var ziptaskname = 'zip-' + plugin.shortname;
 
     ziptasks.push(ziptaskname);
